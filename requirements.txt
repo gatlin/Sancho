@@ -1,0 +1,13 @@
+Django==1.6.2
+South==0.8.4
+django-json-field==0.5.5
+django-oauth2-provider==0.2.6
+django-uuidfield==0.5.0
+djangorestframework==2.3.13
+drf-any-permissions==0.0.1
+hawkrest==0.0.2
+mohawk==0.2.1
+python-dateutil==2.2
+shortuuid==0.4
+six==1.6.1
+wsgiref==0.1.2
