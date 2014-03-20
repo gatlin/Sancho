@@ -24,15 +24,6 @@ class UnixEpochDateField(serializers.DateTimeField):
             value = time.time()
         return datetime.datetime.fromtimestamp(int(value))
 
-class PostSerializer(serializers.ModelSerializer):
-    created = UnixEpochDateField()
-    updated = UnixEpochDateField()
-
-    links = serializers.RelatedField(many=True)
-
-    class Meta:
-        model = Post
-
 class ContentTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContentType
@@ -41,3 +32,11 @@ class LinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Link
 
+class PostSerializer(serializers.ModelSerializer):
+    created = UnixEpochDateField()
+    updated = UnixEpochDateField()
+
+    links = LinkSerializer(many=True)
+
+    class Meta:
+        model = Post

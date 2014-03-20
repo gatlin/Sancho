@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib import admin
-from uuidfield import UUIDField
 from json_field import JSONField
 from django.contrib.auth.models import User
+import uuid
 
 class ContentType(models.Model):
     '''
@@ -38,7 +38,8 @@ class Post(models.Model):
 
     Posts are arbitrary JSON wrapped in an object containing various metadata.
     '''
-    uid = UUIDField(auto=True)
+    uid =\
+    models.CharField(max_length=256,primary_key=True,default=uuid.uuid4(),blank=True)
     content_type = models.ForeignKey("ContentType",related_name="posts")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True,auto_now=True)
