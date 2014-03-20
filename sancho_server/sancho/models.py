@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib import admin
-from json_field import JSONField
+import jsonfield
 from django.contrib.auth.models import User
 import uuid
 
@@ -39,11 +39,12 @@ class Post(models.Model):
     Posts are arbitrary JSON wrapped in an object containing various metadata.
     '''
     uid =\
-    models.CharField(max_length=256,primary_key=True,default=uuid.uuid4(),blank=True)
+            models.CharField(max_length=256,primary_key=True,default=\
+            lambda: uuid.uuid4(),blank=True)
     content_type = models.ForeignKey("ContentType",related_name="posts")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True,auto_now=True)
-    content = JSONField()
+    content = jsonfield.JSONField()
     owner = models.ForeignKey(User)
 
 class PostAdmin(admin.ModelAdmin):
