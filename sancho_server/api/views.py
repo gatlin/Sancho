@@ -12,7 +12,7 @@ from django.shortcuts import redirect, render
 
 class PostViewSet(viewsets.ModelViewSet):
     '''
-    A viewset for orders
+    A viewset for posts
     '''
     queryset = Post.objects.all()
     serializer_class = PostSerializer
